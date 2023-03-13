@@ -1,5 +1,3 @@
-IN PROGRESS
-
 """
 20. Valid Parentheses
 
@@ -28,6 +26,25 @@ Example 3:
 Input: s = "(]"
 Output: false
 """
-def isValid(s: str) -> bool:
-    openBrackets = ['(', '{', '[']
-    closedBrackets = [')', '}', ']']
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        temp =[]
+        open1  = ['(','[','{']
+        close1 = [')',']','}']
+    
+        temp.append(s[0])
+        for char in range(1, len(s)) :
+            #print(temp)
+            
+            if s[char] in open1 :
+                temp.append(s[char])
+                #print(temp)
+            elif (temp) and (temp[-1] == open1[close1.index(s[char])]):
+                del temp[-1]
+                #print(temp)
+            else :
+                return False
+
+        if not temp : return True
+        else : return False
